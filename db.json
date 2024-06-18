@@ -1,0 +1,30 @@
+{
+  "rooms": {
+    "test": {
+      "id": "4t_0trbZ4he7jlk_fAgxM",
+      "players": {
+        "wsil2pSqM0DEtFhFAAAF": {
+          "symbol": "X",
+          "ready": true
+        },
+        "rvozLFpNgFUN1cMOAAAH": {
+          "symbol": "O",
+          "ready": true
+        }
+      },
+      "board": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "inProgress": false,
+      "currentPlayer": "rvozLFpNgFUN1cMOAAAH"
+    }
+  }
+}
