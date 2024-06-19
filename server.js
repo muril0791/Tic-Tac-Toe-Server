@@ -14,12 +14,14 @@ const io = new Server(server, {
   cors: {
     origin: clientUrl,
     methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
 app.use(
   cors({
     origin: clientUrl,
+    credentials: true,
   })
 );
 
