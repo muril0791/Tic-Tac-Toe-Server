@@ -3,6 +3,7 @@ import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
 import { nanoid } from "nanoid";
+import auth from "basic-auth";
 
 const app = express();
 const server = http.createServer(app);
@@ -51,6 +52,26 @@ const checkWin = (board) => {
 const checkDraw = (board) => {
   return board.every((cell) => cell !== null);
 };
+
+// Função de autenticação básica
+const basicAuth = (req, res, next) => {
+  const user = auth(req);
+  if (user && user.name === "admin" && user.pass === "password") {
+    return next();
+  } else {
+    res.set("WWW-Authenticate", 'Basic realm="example"');
+    return res.status(401).send("Authentication required.");
+  }
+};
+
+// Rota para visualizar logs ou informações do backend
+app.get("/logs", basicAuth, (req, res) => {
+  res.json({
+    players,
+    rooms,
+    message: "Informações do servidor",
+  });
+});
 
 io.on("connection", (socket) => {
   console.log("a user connected:", socket.id);
