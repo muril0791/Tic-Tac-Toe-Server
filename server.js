@@ -8,19 +8,20 @@ import auth from "basic-auth";
 const app = express();
 const server = http.createServer(app);
 
-const clientUrl = process.env.CLIENT_URL || "http://localhost:5173";
-
 const io = new Server(server, {
   cors: {
-    origin: clientUrl,
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
     methods: ["GET", "POST"],
+    allowedHeaders: ["Authorization"],
     credentials: true,
   },
 });
 
 app.use(
   cors({
-    origin: clientUrl,
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Authorization"],
     credentials: true,
   })
 );
